@@ -8,20 +8,31 @@ import Cart from "./Pages/Cart";
 import Navbar from "./Components/Navbar";
 import { Provider } from "react-redux";
 import Store from "./Store/Store";
+import { PersistGate } from "redux-persist/integration/react";
+import { persistStore } from "redux-persist";
 function App() {
-  const [count, setCount] = useState(0);
+  const persistor = persistStore(Store);
 
   return (
     <>
       <div className="App">
         <Provider store={Store}>
-          <BrowserRouter>
-            <Navbar />
-            <Routes>
-              <Route path="/" element={<Home />}></Route>
-              <Route path="/cart" element={<Cart />}></Route>
-            </Routes>
-          </BrowserRouter>
+          <PersistGate
+            loading={
+              <div>
+                <h1>Loading...</h1>
+              </div>
+            }
+            persistor={persistor}
+          >
+            <BrowserRouter>
+              <Navbar />
+              <Routes>
+                <Route path="/" element={<Home />}></Route>
+                <Route path="/cart" element={<Cart />}></Route>
+              </Routes>
+            </BrowserRouter>
+          </PersistGate>
         </Provider>
       </div>
     </>
