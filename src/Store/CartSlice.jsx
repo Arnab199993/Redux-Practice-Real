@@ -6,7 +6,6 @@ const CartSlice = createSlice({
   initialState,
   reducers: {
     add(state, action) {
-      //we should not mutate state directly
       state.push(action.payload);
     },
     remove(state, action) {
