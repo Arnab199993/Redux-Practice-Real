@@ -62,6 +62,7 @@ export const { setProducts, setStatus } = productSlice.actions;
 //Create async thunk method
 export const fetchProducts = createAsyncThunk("products/fetch", async () => {
   const url = "https://fakestoreapi.com/products";
+
   let response = await fetch(url);
   response = await response.json();
   return response;
