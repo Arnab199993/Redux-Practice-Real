@@ -7,6 +7,7 @@ const Cart = () => {
   const dispatch = useDispatch();
 
   const handleRemove = (id) => {
+    console.log("idddd", id);
     dispatch(remove(id));
   };
 
